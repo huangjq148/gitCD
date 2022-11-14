@@ -1,0 +1,28 @@
+<div id="app">
+  <div v-for="(item,index) in projects" :key="index">
+    <div>project: <input type="text" v-model="item.name" /></div>
+    <div>cmd: <input type="text" v-model="item.cmd" /></div>
+  </div>
+</div>
+
+<script type="module">
+  import { createApp } from "./vue.js";
+
+  const getProjects = async () => {
+    const result = await fetch("/projects");
+    const projects = await result.json();
+    return projects;
+  };
+
+  createApp({
+    data() {
+      return {
+        message: "Hello Vue!",
+        projects: [],
+      };
+    },
+    async mounted() {
+      this.projects = await getProjects();
+    },
+  }).mount("#app");
+</script>

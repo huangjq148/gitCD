@@ -1,0 +1,9 @@
+{
+  "projects": [
+    {
+      "name": "goods",
+      "url": "https://github.com/huangjq148/goods.git",
+      "cmd": "cd goods && pnpm build"
+    }
+  ]
+}
